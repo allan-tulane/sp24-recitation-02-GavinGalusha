@@ -1,7 +1,7 @@
 # CMPS 2200  Recitation 02
 
-**Name (Team Member 1):**_________________________  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 1):**________Gavin Galusha_________________  
+**Name (Team Member 2):**_________Isaac Ratzaan________________
 
 In this recitation, we will investigate recurrences. 
 To complete this recitation, follow the instructions in this document. Some of your answers will go in this file, and others will require you to edit `main.py`.
@@ -37,11 +37,22 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-**TODO: your answer goes here**
+**For f(n) = 1, aW(n/b) + 1, the asymptotic behavior should be O(logb(n)) because the the work done outside of the recursive call is constant, and with each step the problem size is divided by b**
 
-- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
+**For $f(n) = logb(n), aW(n/b) + logb(n), the asymptotic behavior should be O(log(n))$   The logb(n) term can be expressed as log n / log b, so the work is (log n / log b) + log n, which boils down to $O(logn)$**
 
-**TODO: your answer goes here**
+**For $f(n) = n, aW(n/b) + n, the asymptotic behavior should be O(n)$. The work done outside of the recursive call is linear**
+
+
+
+
+- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
+
+
+
+**for c < log_b(a), W(n) = log_b(n) + n^(log_b(a)) = O(n^(log_b(a)))
+for c > log_b(a), W(n) = log_b(n) + n^c = O(n^c)
+for c = log_b(a), W(n) = Θ(n^c log n)**
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
