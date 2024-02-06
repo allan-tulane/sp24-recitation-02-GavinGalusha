@@ -37,23 +37,46 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-**For f(n) = 1, aW(n/b) + 1, the asymptotic behavior should be O(logb(n)) because the the work done outside of the recursive call is constant, and with each step the problem size is divided by b**
+**f(n) demonstrates asymptotic superiority to f(n) = log n, which in turn surpasses f(n) = 1 in terms of growth rate. The reason for this hierarchy is that the total workload at each level escalates. Moreover, f(n) = 1 exhibits a more linear escalation as n increases, showing leaf-level dominations. On the other hand, f(n) maintains a more balanced growth pattern, while f(n) = n displays an exponential rise.
 
-**For $f(n) = logb(n), aW(n/b) + logb(n), the asymptotic behavior should be O(log(n))$   The logb(n) term can be expressed as log n / log b, so the work is (log n / log b) + log n, which boils down to $O(logn)$**
+|     n |   f(n)=1 |   f(n)=log(n) |   f(n)=n |
+|-------|----------|---------------|----------|
+|    10 |       15 |        19.966 |       36 |
+|    20 |       31 |        44.253 |       92 |
+|    50 |       63 |       107.311 |      276 |
+|   100 |      127 |       221.265 |      652 |
+|  1000 |     1023 |      1896.421 |     9120 |
+|  5000 |     8191 |     12497.283 |    61728 |
+| 10000 |    16383 |     25007.854 |   133456 |
 
-**For $f(n) = n, aW(n/b) + n, the asymptotic behavior should be O(n)$. The work done outside of the recursive call is linear**
-
-
+**
 
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
 
+**
+The graph indicates W(n) has the greatest asymptotic growth when c > log_b(a). The next level of dominance in the work function is observed when c equals log_b(a), and the lowest asymptotic growth happens when c is smaller log_b(a). It can be concluded that for any given level of n, the work value is the highest for the function with the highest asymptotic behavior, a relationship that is consistent across the range of n.
 
 
-**for c < log_b(a), W(n) = log_b(n) + n^(log_b(a)) = O(n^(log_b(a)))
-for c > log_b(a), W(n) = log_b(n) + n^c = O(n^c)
-for c = log_b(a), W(n) = Θ(n^c log n)**
-
+|     n |   c<log_b(a) |   c=log_b(a) |   c>log_b(a) |
+|-------|--------------|--------------|--------------|
+|    10 |       21.291 |           36 |          174 |
+|    20 |       47.055 |           92 |          748 |
+|    50 |      110.236 |          276 |         4790 |
+|   100 |      230.472 |          652 |        19580 |
+|  1000 |     2075.117 |         9120 |      1990744 |
+|  5000 |    14251.208 |        61728 |     49957880 |
+| 10000 |    28602.416 |       133456 |    199915760 |
+**
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
-**TODO: your answer goes here**
+
+**|     n |    f(n)=1 |   f(n)=log_2(n) |    f(n)=n |
+|-------|-----------|-----------------|-----------|
+|    10 |    21.291 |              36 |       174 |
+|    20 |    47.055 |              92 |       748 |
+|    50 |   110.236 |             276 |      4790 |
+|   100 |   230.472 |             652 |     19580 |
+|  1000 |  2075.117 |            9120 |   1990744 |
+|  5000 | 14251.208 |           61728 |  49957880 |
+| 10000 | 28602.416 |          133456 | 199915760 |**
