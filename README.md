@@ -37,7 +37,14 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-**f(n) demonstrates asymptotic superiority to f(n) = log n, which in turn surpasses f(n) = 1 in terms of growth rate. The reason for this hierarchy is that the total workload at each level escalates. Moreover, f(n) = 1 exhibits a more linear escalation as n increases, showing leaf-level dominations. On the other hand, f(n) maintains a more balanced growth pattern, while f(n) = n displays an exponential rise.
+**
+So, for $f(n) = 1$, we got $W(n) = aW(n/b) + 1$, which means it should be $O(\log_b n)$.
+
+Now, when $f(n) = \log n$, the equation is $W(n) = aW(n/b) + \log n$. Using the log base change rule, it simplifies to $W(n) = aW(n/b) + \log n = \log_b n + \log n = (\log n)/(\log b) + \log n = \log (n/b) + \log n$, which ends up being $O(\log n)$.
+
+And for $f(n) = n$, the formula is $W(n) = aW(n/b) + n$, so it should end up being $O(n)$.
+
+f(n) demonstrates asymptotic superiority to f(n) = log n, which in turn surpasses f(n) = 1 in terms of growth rate. The reason for this hierarchy is that the total workload at each level escalates. Moreover, f(n) = 1 exhibits a more linear escalation as n increases, showing leaf-level dominations. On the other hand, f(n) maintains a more balanced growth pattern, while f(n) = n displays an exponential rise.
 
 |     n |   f(n)=1 |   f(n)=log(n) |   f(n)=n |
 |-------|----------|---------------|----------|
