@@ -56,12 +56,12 @@ f(n) demonstrates asymptotic superiority to f(n) = log n, which in turn surpasse
 |  5000 |     8191 |     12497.283 |    61728 |
 | 10000 |    16383 |     25007.854 |   133456 |
 
-**
+
 
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
 
-**
+
 The graph indicates W(n) has the greatest asymptotic growth when c > log_b(a). The next level of dominance in the work function is observed when c equals log_b(a), and the lowest asymptotic growth happens when c is smaller log_b(a). It can be concluded that for any given level of n, the work value is the highest for the function with the highest asymptotic behavior, a relationship that is consistent across the range of n.
 
 
@@ -74,11 +74,11 @@ The graph indicates W(n) has the greatest asymptotic growth when c > log_b(a). T
 |  1000 |     2075.117 |         9120 |      1990744 |
 |  5000 |    14251.208 |        61728 |     49957880 |
 | 10000 |    28602.416 |       133456 |    199915760 |
-**
+
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
 
-**|     n |    f(n)=1 |   f(n)=log_2(n) |    f(n)=n |
+|     n |    f(n)=1 |   f(n)=log_2(n) |    f(n)=n |
 |-------|-----------|-----------------|-----------|
 |    10 |    21.291 |              36 |       174 |
 |    20 |    47.055 |              92 |       748 |
@@ -86,4 +86,4 @@ The graph indicates W(n) has the greatest asymptotic growth when c > log_b(a). T
 |   100 |   230.472 |             652 |     19580 |
 |  1000 |  2075.117 |            9120 |   1990744 |
 |  5000 | 14251.208 |           61728 |  49957880 |
-| 10000 | 28602.416 |          133456 | 199915760 |**
+| 10000 | 28602.416 |          133456 | 199915760 |
